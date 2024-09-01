@@ -1,6 +1,6 @@
 {
   "branchPrefix": "self-hosted-renovate/",
-  "username": "renovate-release",
+  "username": "yuya-takeyama-renovate-practice",
   "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
   "onboarding": true,
   "platform": "github",
