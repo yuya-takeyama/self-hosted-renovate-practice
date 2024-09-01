@@ -1,0 +1,18 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  renovate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
+      - name: Self-hosted Renovate
+        uses: renovatebot/github-action@v40.2.6
+        with:
+          renovate-version: full
+          token: ${{ secrets.GITHUB_TOKEN }}
