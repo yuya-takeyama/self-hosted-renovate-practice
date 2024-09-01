@@ -7,15 +7,18 @@ jobs:
   renovate:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
-      issues: write
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.7
+      - uses: actions/create-github-app-token@v1.10.1
+        id: app-token
+        with:
+          app-id: ${{ vars.GH_APP_ID }}
+          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v40.2.6
         with:
           configurationFile: config.json
           renovate-version: full
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ steps.app-token.outputs.token }}
