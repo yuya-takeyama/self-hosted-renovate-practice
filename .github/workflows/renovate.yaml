@@ -1,3 +1,5 @@
+name: renovate
+
 on:
   workflow_dispatch:
 
@@ -5,7 +7,7 @@ jobs:
   renovate:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       pull-requests: write
       issues: write
     steps:
