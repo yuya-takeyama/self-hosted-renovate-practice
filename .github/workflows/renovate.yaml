@@ -2,6 +2,8 @@ name: renovate
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 11 * * 5'  # 毎週金曜 20:00 JST
 
 jobs:
   renovate:
