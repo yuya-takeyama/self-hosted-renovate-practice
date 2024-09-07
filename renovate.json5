@@ -17,7 +17,7 @@
         'image_identifier\\s*=\\s*"(?<depName>(?:\\d+\\.dkr\\.ecr\\.[^\\.]+\\.amazonaws.com)/[^:]+?):(?<currentValue>.+?)"',
       ],
       datasourceTemplate: "docker",
-      registryUrlTemplate: "https://{{depName}}",
+      registryUrlTemplate: "https://{{ lookup (split depName '/') 0 }}",
     },
   ],
 }
