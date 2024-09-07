@@ -14,7 +14,7 @@
       customType: "regex",
       fileMatch: ["\\.tf$"],
       matchStrings: [
-        'image_identifier\\s*=\\s*"(?<depName>(?<registryUrl>[^/]+)/[^:]+?):(?<currentValue>.+?)"',
+        'image_identifier\\s*=\\s*"(?<depName>(?<registryUrls>[^/]+)/[^:]+?):(?<currentValue>.+?)"',
       ],
       datasourceTemplate: "docker",
     },
