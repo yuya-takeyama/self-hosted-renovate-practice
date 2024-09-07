@@ -3,13 +3,14 @@ name: renovate
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 11 * * 5'  # 毎週金曜 20:00 JST
+    - cron: "0 11 * * 5" # 毎週金曜 20:00 JST
 
 jobs:
   renovate:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
@@ -18,10 +19,13 @@ jobs:
         with:
           app-id: ${{ vars.GH_APP_ID }}
           private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+      - uses: aws-actions/configure-aws-credentials@v4.0.2
+        with:
+          aws-region: ap-northeast-1
+          role-to-assume: arn:aws:iam::943566097936:role/renovate
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@630a255a1f2f56c8d8ce160bed3e3ca577ca53e2 # v40.2.7
         with:
           configurationFile: config.json
           renovate-version: full
           token: ${{ steps.app-token.outputs.token }}
-
