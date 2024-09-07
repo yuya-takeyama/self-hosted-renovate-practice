@@ -14,7 +14,7 @@
       customType: "regex",
       fileMatch: ["\\.tf$"],
       matchStrings: [
-        'image_identifier\\s*=\\s*"(?<depName>[^:]+?):(?<currentValue>.+?)"',
+        'image_identifier\\s*=\\s*"(?<registryUrls>[^/]+)/(?<depName>[^:]+?):(?<currentValue>.+?)"',
       ],
       datasourceTemplate: "docker",
       registryUrlTemplate: "https://943566097936.dkr.ecr.ap-northeast-1.amazonaws.com",
