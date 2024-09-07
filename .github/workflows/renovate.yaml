@@ -29,6 +29,11 @@ jobs:
           configurationFile: config.json
           renovate-version: full
           token: ${{ steps.app-token.outputs.token }}
+          env-regex: "^(?:LOG_LEVEL|AWS_DEFAULT_REGION|AWS_REGION|AWS_ACCESS_KEY_ID|AWS_SECRET_ACCESS_KEY|AWS_SESSION_TOKEN)$"
         env:
           LOG_LEVEL: debug
-
+          AWS_DEFAULT_REGION: ${{ env.AWS_DEFAULT_REGION }}
+          AWS_REGION: ${{ env.AWS_REGION }}
+          AWS_ACCESS_KEY_ID: ${{ env.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ env.AWS_SECRET_ACCESS_KEY }}
+          AWS_SESSION_TOKEN: ${{ env.AWS_SESSION_TOKEN }}
