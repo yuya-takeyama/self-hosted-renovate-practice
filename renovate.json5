@@ -1,9 +1,6 @@
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
-  extends: [
-    "config:recommended",
-    "github>aquaproj/aqua-renovate-config#2.3.1",
-  ],
+  extends: ["config:recommended", "github>aquaproj/aqua-renovate-config#2.3.1"],
   labels: [
     "renovate:{{depName}}",
     "renovate:{{depName}}/{{newVersion}}",
@@ -12,4 +9,12 @@
   patch: {
     automerge: true,
   },
+  customManagers: [
+    {
+      customType: "regex",
+      fileMatch: ["\\.tf$"],
+      matchStrings: ["image_identifier\\s*=\\s*\\"(?<depName>[^:]+?):(?<currentValue>.+?)\\""],
+      datasourceTemplate: "docker",
+    },
+  ],
 }
