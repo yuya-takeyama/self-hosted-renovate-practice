@@ -5,7 +5,7 @@ RUN go mod download
 COPY . .
 RUN go build -o main .
 
-FROM alpine:3.18
+FROM alpine:3.20
 WORKDIR /root/
 COPY --from=builder /app/main .
 EXPOSE 8080
